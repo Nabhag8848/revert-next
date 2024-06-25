@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import clsx from "clsx";
 import {
   ClerkProvider,
   SignInButton,
   SignedIn,
   SignedOut,
 } from "@clerk/nextjs";
-
-const inter = Inter({ subsets: ["latin"] });
+import { inter } from "@revertdotdev/components/fonts";
+import { cn } from "@revertdotdev/lib/utils";
 
 export const metadata: Metadata = {
   title: {
@@ -27,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <ClerkProvider>
         <body
-          className={clsx(
+          className={cn(
             inter.className,
             "bg-primary-950 min-h-screen antialiased text-slate-50 flex flex-col"
           )}

@@ -12,6 +12,9 @@ const config: Config = {
         primary: {
           "950": "#0A0E17",
         },
+        accent: {
+          "500": "#2689FD",
+        },
       },
     },
   },
