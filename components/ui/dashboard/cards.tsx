@@ -23,7 +23,7 @@ export default function CardWrapper() {
 
 export function Card({ title, value, children }: CardProps) {
   return (
-    <div className="rounded-xl p-2 shadow-sm border border-gray-50/15">
+    <div className="rounded-xl p-2 shadow-sm border border-gray-25">
       <div className="flex p-3">
         <div className="bg-shade-800 rounded-xl shadow-sm p-6 my-auto">
           {children}
