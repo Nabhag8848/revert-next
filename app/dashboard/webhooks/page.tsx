@@ -1,10 +1,13 @@
 import { inter } from "@revertdotdev/components/fonts";
+import DashboardHeader from "@revertdotdev/components/ui/DashboardHeader";
 
 export default async function Page() {
   return (
     <main>
-      <h1 className={`${inter.className} mb-4 text-xl md:text-2xl`}>Webhooks</h1>
-      <div>Webhooks Page</div>
+      <DashboardHeader
+        title="Webhooks"
+        description="Configure and Manage your Webhook Endpoints here"
+      />
     </main>
   );
 }

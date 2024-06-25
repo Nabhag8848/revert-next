@@ -1,12 +1,13 @@
 import { inter } from "@revertdotdev/components/fonts";
+import DashboardHeader from "@revertdotdev/components/ui/DashboardHeader";
 
 export default async function Page() {
   return (
     <main>
-      <h1 className={`${inter.className} mb-4 text-xl md:text-2xl`}>
-        Dashboard
-      </h1>
-      <div>Dashboard Body</div>
+      <DashboardHeader
+        title="Dashboard"
+        description="Check how your integrations are performing"
+      />
     </main>
   );
 }
