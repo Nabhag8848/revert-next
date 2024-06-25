@@ -15,6 +15,9 @@ const config: Config = {
         accent: {
           "500": "#2689FD",
         },
+        shade: {
+          "800": "#081b33",
+        },
       },
     },
   },

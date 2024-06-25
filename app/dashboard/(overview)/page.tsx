@@ -1,5 +1,5 @@
-import { inter } from "@revertdotdev/components/fonts";
 import DashboardHeader from "@revertdotdev/components/ui/DashboardHeader";
+import CardWrapper from "@revertdotdev/components/ui/dashboard/cards";
 
 export default async function Page() {
   return (
@@ -8,6 +8,9 @@ export default async function Page() {
         title="Dashboard"
         description="Check how your integrations are performing"
       />
+      <div className="grid gap-6 grid-cols-3">
+        <CardWrapper />
+      </div>
     </main>
   );
 }
