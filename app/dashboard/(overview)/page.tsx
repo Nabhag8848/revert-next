@@ -1,7 +1,6 @@
 import DashboardHeader from "@revertdotdev/components/ui/DashboardHeader";
 import { Badge } from "@revertdotdev/components/ui/dashboard/bagde";
 import CardWrapper from "@revertdotdev/components/ui/dashboard/cards";
-import ApiRequestChart from "@revertdotdev/components/ui/dashboard/chart";
 
 export default async function Page() {
   return (
@@ -14,8 +13,7 @@ export default async function Page() {
         <CardWrapper />
       </div>
       <div className="flex">
-        <ApiRequestChart />
-        <div className="border border-gray-25 rounded-xl p-8">
+        <div className="border border-gray-25 rounded-xl p-6 w-4/12">
           <div className="mb-4">
             <h2 className="text-lg font-semibold mb-1">Recent Api Calls</h2>
             <p className="text-sm">
@@ -26,13 +24,17 @@ export default async function Page() {
 
           <div className="grid grid-cols-2 text-xs">
             <div>
-              <h3 className="uppercase text-gray-50/70 font-bold">endpoint</h3>
+              <h3 className="uppercase text-gray-50/70 font-bold mb-2">
+                endpoint
+              </h3>
               <Badge variant="get"> GET </Badge>
               <Badge variant="post"> POST </Badge>
               <Badge variant="put"> PUT </Badge>
             </div>
             <div className="justify-self-end">
-              <h3 className="uppercase text-gray-50/70 font-bold">enabled</h3>
+              <h3 className="uppercase text-gray-50/70 font-bold mb-2">
+                enabled
+              </h3>
             </div>
           </div>
         </div>
