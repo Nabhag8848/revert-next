@@ -1,7 +1,22 @@
+import { auth } from "@clerk/nextjs/server";
 import DashboardHeader from "@revertdotdev/components/ui/DashboardHeader";
 import Clipboard from "@revertdotdev/components/ui/common/Clipboard";
+import { fetchAccountDetails } from "@revertdotdev/lib/api";
 
 export default async function Page() {
+  const { userId } = auth();
+
+  if (!userId) {
+    return null;
+  }
+
+  const { currentPrivateToken, currentPublicToken, err } =
+    await fetchAccountDetails(userId);
+
+  if (err) {
+    return null;
+  }
+
   return (
     <main>
       <DashboardHeader
@@ -14,7 +29,7 @@ export default async function Page() {
           This key should be used in your frontend code, can be safely shared
           and does not need to be kept secret
         </p>
-        <Clipboard value="pk_test_76e7a80c-4428-4ad3-9d41-d1d05265c310" />
+        <Clipboard value={currentPublicToken} />
       </div>
       <div>
         <h2 className="text-lg font-semibold mb-1">Secret key</h2>
@@ -22,7 +37,7 @@ export default async function Page() {
           This are the secret keys to be used from your backend code.They are
           sensitive and should be deleted if leaked
         </p>
-        <Clipboard value="sk_test_c78489a6-a5b9-4e9b-b028-585082f8a219" />
+        <Clipboard value={currentPrivateToken} />
       </div>
     </main>
   );

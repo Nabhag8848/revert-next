@@ -3,10 +3,23 @@ import ClerkButton from "./ClerkButton";
 import OnboardingNavLink from "./onboarding/NavLink";
 import Link from "next/link";
 import { BookOpenIcon } from "@heroicons/react/24/outline";
-import { Icons } from "../icons";
-import { Switch } from "@revertdotdev/components/ui/common/Switch";
+import { fetchAccountDetails } from "@revertdotdev/lib/api";
+import { auth } from "@clerk/nextjs/server";
+import EnvironmentMode from "@revertdotdev/components/ui/EnvironmentMode";
 
-export default function SideNav() {
+export default async function SideNav() {
+  const { userId } = auth();
+
+  if (!userId) {
+    return null;
+  }
+
+  const { err, isDefaultEnvironment } = await fetchAccountDetails(userId);
+
+  if (err) {
+    return null;
+  }
+
   return (
     <div className="flex h-full flex-col px-3 py-4">
       <div className="mb-2 h-14">
@@ -27,9 +40,9 @@ export default function SideNav() {
           <p className="hidden md:block">Developer Docs</p>
         </Link>
         <div className="flex grow text-gray-50 items-center justify-center gap-2 rounded-md p-3 text-sm font-medium md:flex-none md:justify-start md:p-2 md:px-3">
-          <Icons.axe className="w-6 hidden md:block" />
-          <p>Dev Mode</p>
-          <Switch className="md:ml-auto" />
+          <EnvironmentMode
+            isDefaultEnvironment={isDefaultEnvironment ?? true}
+          />
         </div>
 
         <ClerkButton />
