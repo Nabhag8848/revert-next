@@ -4,3 +4,7 @@ import { twMerge } from "tailwind-merge";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export function formatNumber(number: number) {
+  return Intl.NumberFormat("en-IN").format(number);
+}

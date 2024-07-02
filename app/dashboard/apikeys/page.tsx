@@ -10,10 +10,10 @@ export default async function Page() {
     return null;
   }
 
-  const { currentPrivateToken, currentPublicToken, err } =
+  const { currentPrivateToken, currentPublicToken, message } =
     await fetchAccountDetails(userId);
 
-  if (err) {
+  if (message) {
     return null;
   }
 

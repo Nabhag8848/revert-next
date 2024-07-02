@@ -1,8 +1,21 @@
+import { auth } from "@clerk/nextjs/server";
 import DashboardHeader from "@revertdotdev/components/ui/DashboardHeader";
 import { Badge } from "@revertdotdev/components/ui/dashboard/bagde";
 import CardWrapper from "@revertdotdev/components/ui/dashboard/cards";
+import { fetchAnalytics } from "@revertdotdev/lib/api";
 
 export default async function Page() {
+  const { userId } = auth();
+  if (!userId) {
+    return null;
+  }
+
+  const { message, result } = await fetchAnalytics(userId);
+
+  if (message) {
+    return null;
+  }
+
   return (
     <main>
       <DashboardHeader
@@ -10,7 +23,7 @@ export default async function Page() {
         description="Check how your integrations are performing"
       />
       <div className="grid gap-6 grid-cols-3 mb-8">
-        <CardWrapper />
+        <CardWrapper value={result} />
       </div>
       <div className="flex">
         <div className="border border-gray-25 rounded-xl p-6 w-4/12">

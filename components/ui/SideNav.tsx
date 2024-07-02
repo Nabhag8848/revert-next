@@ -14,9 +14,9 @@ export default async function SideNav() {
     return null;
   }
 
-  const { err, isDefaultEnvironment } = await fetchAccountDetails(userId);
+  const { message, isDefaultEnvironment } = await fetchAccountDetails(userId);
 
-  if (err) {
+  if (message) {
     return null;
   }
 
